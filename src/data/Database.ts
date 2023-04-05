@@ -1,7 +1,7 @@
 import dotEnv from 'dotenv'
 dotEnv.config()
 import mongoose, { ConnectOptions } from 'mongoose'
-import logger from '../api/utils/logger'
+import logger from '@utils/logger'
 
 class Database {
   private uri: string = `${process.env.MONGO_URI}`
