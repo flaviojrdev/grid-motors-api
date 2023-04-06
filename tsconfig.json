@@ -23,6 +23,7 @@
       "@routes/*": ["api/routes/*"],
       "@useCases/user*": ["api/useCases/user/*"],
       "@useCases/car*": ["api/useCases/car/*"],
+      "@useCases/reserve*": ["api/useCases/reserve/*"],
       "@utils/*": ["api/utils/*"],
       "@data/*": ["data/*"],
     }
