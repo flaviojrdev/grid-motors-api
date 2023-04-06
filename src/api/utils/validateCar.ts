@@ -22,8 +22,8 @@ const carValidationSchema = Joi.object({
   year: Joi.number().required().min(1950).max(2023).messages({
     'number.base': 'Year must be a number',
     'number.empty': 'Year cannot be empty',
-    'number.min': 'Year must be greater than or equal to 1950',
-    'number.max': 'Year must be less than or equal to 2023',
+    'number.min': 'Year must be between 1950 and 2023',
+    'number.max': 'Year must be between 1950 and 2023',
     'any.required': 'Year is required',
   }),
   values_per_day: Joi.number().required().messages({

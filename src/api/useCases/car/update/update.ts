@@ -1,4 +1,5 @@
 import { Request, Response } from 'express'
+import mongoose from 'mongoose'
 import Car from '@entities/car'
 import carValidationSchema from '@utils/validateCar'
 
@@ -8,22 +9,21 @@ export const updateCarById = async (req: Request, res: Response) => {
     if (error) {
       return res.status(400).json({ error: error.details[0].message })
     }
-  } catch (err) {
-    return res.status(500).send('Internal server error')
-  }
 
-  const { id } = req.params
-  const updates = req.body
+    const id = req.params.id
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ error: 'The id is not in the default MongoDB ObjectID' })
+    }
 
-  try {
-    const car = await Car.findById(id)
+    const updates = req.body
+    const car = await Car.findByIdAndUpdate(id, updates, { new: true })
     if (!car) {
       return res.status(404).json({ message: 'Car not found' })
     }
-    car.set(updates)
-    const result = await car.save()
-    res.status(200).json(result)
+
+    const { _id, __v, ...carData } = car.toObject()
+    res.status(200).json(carData)
   } catch (error) {
-    res.status(500).json({ message: 'Internal server error' })
+    res.status(500).json({ error: 'Internal server error' })
   }
 }
