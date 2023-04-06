@@ -6,6 +6,7 @@ const carRouter = Router()
 
 carRouter
   .get('/', carUseCases.listAllCars)
+  .get('/:id', carUseCases.listCarById)
   .post('/', authMiddleware, carUseCases.registerCar)
   .delete('/:id', authMiddleware, carUseCases.removeCarById)
   .put('/:id', authMiddleware, carUseCases.updateCarById)
