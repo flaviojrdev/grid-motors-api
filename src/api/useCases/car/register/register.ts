@@ -1,19 +1,21 @@
-import car from '@entities/car'
-import type { Request, Response } from 'express'
-import carSchema from '@utils/validateCar'
+import Car from '@entities/car'
+import { Request, Response} from 'express'
+import carValidationSchema from '@utils/validateCar'
 
 export const registerCar = async (req: Request, res: Response) => {
   try {
-    const { error } = carSchema.validate(req.body)
+    const carData = { ...req.body }
+
+    const { error } = carValidationSchema.validate(carData)
     if (error) {
       return res.status(400).json({ error: error.details[0].message })
     }
+
+    const newCar = new Car(carData)
+    const result = await newCar.save()
+    const { _id, __v, ...car } = result.toObject()
+    res.status(201).json(car)
   } catch (err) {
-    console.error(err)
     return res.status(500).send('Internal server error')
   }
-
-  const newCar = new car(req.body)
-  const result = await newCar.save()
-  res.status(201).json(result)
 }
