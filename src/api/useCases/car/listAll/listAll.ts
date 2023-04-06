@@ -6,7 +6,7 @@ export const listAllCars = async (req: Request, res: Response) => {
   const limit = parseInt(req.query.limit as string) || 100
 
   const filter: any = {}
-  
+
   if (req.query.model) {
     filter.model = { $regex: new RegExp(req.query.model as string, 'i') }
   }
@@ -33,9 +33,15 @@ export const listAllCars = async (req: Request, res: Response) => {
   const cars = await Car.find(filter)
     .skip((page - 1) * limit)
     .limit(limit)
+    .select('-__v')
+
+  const formattedCars = cars.map((car) => {
+    const { __v, ...carWithoutV } = car.toObject()
+    return carWithoutV
+  })
 
   res.status(200).json({
-    car: cars,
+    cars: formattedCars,
     total: total,
     limit: limit,
     offset: offset,
