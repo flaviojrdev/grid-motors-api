@@ -9,8 +9,7 @@ const accessorySchema = new mongoose.Schema(
       required: true,
       unique: false,
     },
-  },
-  { _id: false },
+  }
 )
 
 const carSchema = new mongoose.Schema({
