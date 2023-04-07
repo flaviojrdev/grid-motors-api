@@ -1,3 +1,5 @@
-export interface IAccessory {
-  description: string;
+import { Document } from 'mongoose'
+
+export interface IAccessory extends Document {
+  description: string
 }
