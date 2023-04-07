@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+import { Document } from 'mongoose';
 import { IAccessory } from './accessory';
 
-export interface ICar extends mongoose.Document {
+export interface ICar extends Document {
   model: string;
   color: string;
   year: number;
