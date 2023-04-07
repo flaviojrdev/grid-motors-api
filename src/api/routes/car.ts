@@ -10,5 +10,6 @@ carRouter
   .post('/', authMiddleware, carUseCases.registerCar)
   .delete('/:id', authMiddleware, carUseCases.removeCarById)
   .put('/:id', authMiddleware, carUseCases.updateCarById)
+  .patch('/:carId/accessories/:accessoryId', authMiddleware, carUseCases.updateAccessoryById)
 
 export default carRouter
