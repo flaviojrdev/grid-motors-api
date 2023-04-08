@@ -1,14 +1,21 @@
 import { Request, Response } from 'express'
+import mongoose from 'mongoose'
 import Car from '@entities/car'
 import { IAccessory } from '@interfaces/accessory'
 
 export const updateAccessoryById = async (req: Request, res: Response) => {
-  const { carId, accessoryId } = req.params
-  console.log('carId', carId)
-  console.log('accessoryId', accessoryId)
-  const updates = req.body
-
   try {
+    const { carId, accessoryId } = req.params
+    const updates = req.body
+
+    if (!mongoose.Types.ObjectId.isValid(carId)) {
+      return res.status(400).json({ message: 'The car id is not in the default MongoDB ObjectID' })
+    }
+
+    if (!mongoose.Types.ObjectId.isValid(accessoryId)) {
+      return res.status(400).json({ message: 'The accessory id is not in the default MongoDB ObjectID' })
+    }
+
     const car = await Car.findById(carId)
     if (!car) {
       return res.status(404).json({ message: 'Car not found' })
