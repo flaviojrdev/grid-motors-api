@@ -14,7 +14,7 @@ export const listAllUsers = async (req: Request, res: Response) => {
     .limit(limit)
 
   res.status(200).json({
-    user: users,
+    users: users,
     total: total,
     limit: limit,
     offset: offset,

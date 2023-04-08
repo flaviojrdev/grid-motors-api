@@ -14,8 +14,8 @@ export const listCarById = async (req: Request, res: Response) => {
       return res.status(404).json({ error: 'Car not found' })
     }
 
-    const { __v, ...carWithoutV } = car.toObject()
-    res.status(200).json(carWithoutV)
+    const { __v, ...carFormatted } = car.toObject()
+    res.status(200).json(carFormatted)
   } catch (error) {
     res.status(500).json({ error: 'Internal server error' })
   }

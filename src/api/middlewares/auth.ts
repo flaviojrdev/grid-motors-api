@@ -5,6 +5,10 @@ import { IUser } from '@interfaces/user'
 import { IRequestWithUser } from '@interfaces/requestWithUser'
 
 export const authMiddleware = async (req: IRequestWithUser, res: Response, next: NextFunction) => {
+  if (process.env.NODE_ENV === 'test' && process.env.SKIP_AUTH === 'true') {
+    return next()
+  }
+
   try {
     const authHeader = req.headers.authorization
     if (!authHeader) {
