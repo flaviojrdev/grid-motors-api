@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import userUseCases from '@useCases/userindex'
+import userUseCases from '@useCases/user/index'
 
 const authRouter = Router()
 
