@@ -9,6 +9,10 @@
     "prod": "tsc && node dist/server.js",
     "dev": "nodemon src/server.ts",
     "test": "jest",
+    "test:list": "jest --testPathPattern list",
+    "test:register": "jest --testPathPattern register",
+    "test:update": "jest --testPathPattern update",
+    "test:remove": "jest --testPathPattern remove",
     "lint": "eslint --ext .ts src/",
     "lint:fix": "eslint --ext .ts src/ --fix"
   },
@@ -26,7 +30,9 @@
     "jsonwebtoken": "^9.0.0",
     "moment": "^2.29.4",
     "mongoose": "^7.0.3",
-    "uuid": "^9.0.0"
+    "swagger-ui-express": "^4.6.2",
+    "uuid": "^9.0.0",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "@babel/node": "^7.20.7",
@@ -40,7 +46,9 @@
     "@types/jsonwebtoken": "^9.0.1",
     "@types/morgan": "^1.9.4",
     "@types/supertest": "^2.0.12",
+    "@types/swagger-ui-express": "^4.1.3",
     "@types/uuid": "^9.0.1",
+    "@types/yamljs": "^0.2.31",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "eslint": "^8.37.0",
