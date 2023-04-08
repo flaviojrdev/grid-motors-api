@@ -26,20 +26,33 @@ export const registerUser = async (req: Request, res: Response) => {
       uf: data.uf,
     })
 
-    const userObject = newUser.toObject({ versionKey: false })
-    delete userObject._id
-    const { error } = userValidationSchema.validate(userObject)
+    const testUser = newUser.toObject({ versionKey: false })
+    delete testUser._id
+    const { error } = userValidationSchema.validate(testUser)
     if (error) {
       return res.status(400).json({ error: error.details[0].message })
     }
 
     const result = await newUser.save()
     const { _id, __v, ...user } = result.toObject()
-    res.status(201).json(user)
-  } catch (err) {
-    if (err instanceof MongoServerError && err.code === 11000 && err.keyValue.email) {
-      return res.status(409).json({ error: 'Email already exists' })
+    const formattedUser = {
+      _id: _id,
+      ...user,
     }
+    res.status(201).json(formattedUser)
+  } catch (err) {
+    if (err instanceof MongoServerError && err.code === 11000) {
+      if (err.keyPattern.email) {
+        return res.status(409).json({ error: 'Email already exists' })
+      }
+      if (err.keyPattern.cpf) {
+        return res.status(409).json({ error: 'CPF already exists' })
+      }
+      if (err.keyPattern.email && err.keyPattern.cpf){
+        return res.status(409).json({ error: 'Email and CPF already exists' })
+      }
+    }
+    console.log(err)
     res.status(500).send('Internal server error')
   }
 }
