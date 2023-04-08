@@ -10,7 +10,7 @@ export const updateCarById = async (req: Request, res: Response) => {
       return res.status(400).json({ error: error.details[0].message })
     }
 
-    const id = req.params.id
+    const id = req.params._id
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({ error: 'The id is not in the default MongoDB ObjectID' })
     }
