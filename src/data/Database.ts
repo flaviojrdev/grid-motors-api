@@ -4,7 +4,7 @@ import mongoose, { ConnectOptions } from 'mongoose'
 import logger from '@utils/logger'
 
 class Database {
-  private uri: string = `${process.env.MONGO_URI}`
+  private uri: string = `${process.env.DATABASE_URI}`
 
   constructor() {}
 
