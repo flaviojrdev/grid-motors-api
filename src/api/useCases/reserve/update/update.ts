@@ -1,4 +1,5 @@
 import { Request, Response } from 'express'
+import mongoose from 'mongoose'
 import Reserve from '@entities/reserve'
 import reserveValidationSchema from '@utils/validateReserve'
 
@@ -8,21 +9,25 @@ export const updateReserveById = async (req: Request, res: Response) => {
     if (error) {
       return res.status(400).json({ error: error.details[0].message })
     }
-  } catch (err) {
-    return res.status(500).send('Internal server error')
-  }
 
-  const { id } = req.params
-  const updates = req.body
+    const id = req.params.id
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ error: 'The id is not in the default MongoDB ObjectID' })
+    }
 
-  try {
-    const reserve = await Reserve.findById(id)
+    const updates = req.body
+    const reserve = await Reserve.findByIdAndUpdate(id, updates, { new: true })
     if (!reserve) {
       return res.status(404).json({ message: 'Reserve not found' })
     }
-    reserve.set(updates)
-    const result = await reserve.save()
-    res.status(200).json(result)
+
+    const { _id, __v, ...reserveWithoutV } = reserve.toObject()
+    const formattedReserve = {
+      _id: _id,
+      ...reserveWithoutV,
+    }
+    
+    res.status(200).json(formattedReserve)
   } catch (error) {
     res.status(500).json({ message: 'Server error' })
   }
