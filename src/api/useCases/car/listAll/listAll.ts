@@ -35,16 +35,11 @@ export const listAllCars = async (req: Request, res: Response) => {
     .limit(limit)
     .select('-__v')
 
-  const formattedCars = cars.map((car) => {
-    const { __v, ...carWithoutV } = car.toObject()
-    return carWithoutV
-  })
-
   res.status(200).json({
-    cars: formattedCars,
-    total: total,
-    limit: limit,
-    offset: offset,
-    offsets: offsets,
+    cars,
+    total,
+    limit,
+    offset,
+    offsets,
   })
 }
