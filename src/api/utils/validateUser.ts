@@ -46,8 +46,8 @@ const userValidationSchema = Joi.object({
       'string.pattern.base': 'CEP should have 8 digits',
       'any.required': 'CEP is required',
     }),
-  qualified: Joi.boolean().truthy('sim', 'yes').falsy('não', 'no').required().messages({
-    'any.only': 'Qualified should be either "sim/yes" or "não/no"',
+  qualified: Joi.string().valid('yes', 'no').trim().required().messages({
+    'any.only': 'Qualified should be either "yes" or "no"',
     'any.required': 'Qualified is required',
   }),
   patio: Joi.string().required().messages({
@@ -69,6 +69,10 @@ const userValidationSchema = Joi.object({
     'string.base': 'Locality should be a string',
     'string.empty': 'Locality cannot be empty',
     'any.required': 'Locality is required',
+  }),
+  uf: Joi.string().required().messages({
+    'string.pattern.base': 'UF should have 2 letters',
+    'any.required': 'UF is required',
   }),
 })
 

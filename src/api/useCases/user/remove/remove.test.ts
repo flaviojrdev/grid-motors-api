@@ -16,7 +16,7 @@ const userD = {
   email: Date.now().toString() + '@mail.com',
   password: '123456',
   cep: '01001000',
-  qualified: 'sim',
+  qualified: 'yes',
   patio: 'Rua do Joaozinho',
   complement: 'Casa 1',
   neighborhood: 'Bairro do Joaozinho',
