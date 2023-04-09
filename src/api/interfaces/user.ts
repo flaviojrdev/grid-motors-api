@@ -7,7 +7,7 @@ export interface IUser extends mongoose.Document {
   email: string
   password: string
   cep: string
-  qualified: boolean
+  qualified: string
   patio: string
   complement: string
   neighborhood: string
