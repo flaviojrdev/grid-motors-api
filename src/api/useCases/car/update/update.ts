@@ -10,7 +10,7 @@ export const updateCarById = async (req: Request, res: Response) => {
       return res.status(400).json({ error: error.details[0].message })
     }
 
-    const id = req.params._id
+    const id = req.params.id
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({ error: 'The id is not in the default MongoDB ObjectID' })
     }
@@ -21,8 +21,13 @@ export const updateCarById = async (req: Request, res: Response) => {
       return res.status(404).json({ message: 'Car not found' })
     }
 
-    const { _id, __v, ...carData } = car.toObject()
-    res.status(200).json(carData)
+    const { _id, __v, ...carWithoutV } = car.toObject()
+    const formattedCar = {
+      _id: _id,
+      ...carWithoutV
+    }
+
+    res.status(200).json(formattedCar)
   } catch (error) {
     res.status(500).json({ error: 'Internal server error' })
   }

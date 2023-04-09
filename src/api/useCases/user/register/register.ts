@@ -18,7 +18,7 @@ export const registerUser = async (req: Request, res: Response) => {
       email: req.body.email,
       password: hashedPassword,
       cep: req.body.cep,
-      qualified: req.body.qualified === 'sim',
+      qualified: req.body.qualified,
       patio: data.logradouro,
       complement: data.complemento,
       neighborhood: data.bairro,
@@ -39,6 +39,7 @@ export const registerUser = async (req: Request, res: Response) => {
       _id: _id,
       ...user,
     }
+
     res.status(201).json(formattedUser)
   } catch (err) {
     if (err instanceof MongoServerError && err.code === 11000) {
@@ -48,11 +49,10 @@ export const registerUser = async (req: Request, res: Response) => {
       if (err.keyPattern.cpf) {
         return res.status(409).json({ error: 'CPF already exists' })
       }
-      if (err.keyPattern.email && err.keyPattern.cpf){
+      if (err.keyPattern.email && err.keyPattern.cpf) {
         return res.status(409).json({ error: 'Email and CPF already exists' })
       }
     }
-    console.log(err)
     res.status(500).send('Internal server error')
   }
 }

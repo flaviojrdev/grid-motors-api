@@ -4,7 +4,7 @@ import User from '@entities/user'
 
 export const removeUserById = async (req: Request, res: Response) => {
   try {
-    const id = req.params._id
+    const id = req.params.id
     if(!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({ error: 'The id is not in the default MongoDB ObjectID' })
     }

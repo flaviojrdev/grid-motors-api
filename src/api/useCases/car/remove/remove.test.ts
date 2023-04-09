@@ -22,7 +22,6 @@ const carD = {
 }
 
 describe('Car deletion', () => {
-
   beforeAll(async () => {
     process.env.SKIP_AUTH = 'true'
     const response = await request.post(routeString).send(carD)
@@ -30,11 +29,13 @@ describe('Car deletion', () => {
   })
 
   afterAll(async () => {
+    const response = await request.get(`${routeString}/${id}`)
     process.env.SKIP_AUTH = 'false'
   })
 
   test('Should be able to delete a car', async () => {
     const response = await request.delete(`${routeString}/${id}`)
     expect(response.status).toBe(204)
-  })  
+  })
 })
+

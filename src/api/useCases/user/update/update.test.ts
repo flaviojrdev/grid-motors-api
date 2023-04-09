@@ -9,7 +9,7 @@ function threeNum() {
   return Math.floor(Math.random() * 900) + 100
 }
 
-const userD = {
+const userU = {
   name: 'Joaozinho Fulano',
   cpf: `${threeNum()}.${threeNum()}.${threeNum()}-00`,
   birth: '04/01/1990',
@@ -24,19 +24,35 @@ const userD = {
   uf: 'SP',
 }
 
-describe('User deletion', () => {
+const userU2 = {
+  name: 'Ciclano',
+  cpf: `${threeNum()}.${threeNum()}.${threeNum()}-00`,
+  birth: '10/10/2000',
+  email: Date.now().toString() + '@mail.com',
+  password: '123456',
+  cep: '01001000',
+  qualified: 'yes',
+  patio: 'Rua do Joaozinho',
+  complement: 'Casa 1',
+  neighborhood: 'Bairro do Joaozinho',
+  locality: 'Cidade do Joaozinho',
+  uf: 'SP',
+}
+
+describe('User update', () => {
   beforeAll(async () => {
     process.env.SKIP_AUTH = 'true'
-    const response = await request.post(routeString).send(userD)
+    const response = await request.post(routeString).send(userU)
     id = response.body._id
   })
 
   afterAll(async () => {
+    await request.delete(`${routeString}/${id}`)
     process.env.SKIP_AUTH = 'false'
   })
 
-  test('Should be able to delete a user', async () => {
-    const response = await request.delete(`${routeString}/${id}`)
-    expect(response.status).toBe(204)
+  test('should update a user by id', async () => {
+    const response = await request.put(`${routeString}/${id}`).send(userU2)
+    expect(response.status).toBe(200)
   })
 })

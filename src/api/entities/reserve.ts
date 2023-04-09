@@ -26,8 +26,6 @@ const reserveSchema = new mongoose.Schema<Ireserve>({
   },
 })
 
-reserveSchema.index({ start_date: 1, id_car: 1 }, { unique: true })
-
 const Reserve = mongoose.model<Ireserve>('Reserve', reserveSchema)
 
 export default Reserve

@@ -3,6 +3,7 @@ import { listAllUsers } from './listAll/listAll'
 import { removeUserById } from './remove/remove'
 import { updateUserById } from './update/update'
 import { authenticateUser } from './auth/auth'
+import { listUserById } from './listById/listById'
 
 const userUseCases = {
   registerUser,
@@ -10,6 +11,7 @@ const userUseCases = {
   removeUserById,
   updateUserById,
   authenticateUser,
+  listUserById,
 }
 
 export default userUseCases
