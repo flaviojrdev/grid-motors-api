@@ -13,7 +13,6 @@ export const registerCar = async (req: Request, res: Response) => {
 
     const newCar = new Car(carData)
     const result = await newCar.save()
-
     const { _id, __v, ...car } = result.toObject()
     const formattedResponse = {
       _id: _id,
