@@ -18,11 +18,33 @@ export const registerReserve = async (req: IRequestWithUser, res: Response) => {
       return res.status(401).json({ error: 'User unauthorized' })
     }
 
+    if (user.qualified !== 'yes') {
+      return res.status(403).json({ error: 'User must have a driver license' })
+    }
+
     const start = req.body.start_date
     const end = req.body.end_date
     const duration = moment.duration(moment(end, 'DD/MM/YYYY').diff(moment(start, 'DD/MM/YYYY')))
     const days = duration.asDays()
     const finalValue = car.values_per_day * days
+
+    const existingUserReservation = await Reserve.findOne({
+      id_user: user._id,
+      start_date: { $lte: end },
+      end_date: { $gte: start }
+    })
+    if (existingUserReservation) {
+      return res.status(400).json({ error: `You have already made a reservation from ${start} until ${end}` })
+    }
+
+    const existingReservation = await Reserve.findOne({
+      id_car: car._id,
+      start_date: { $lte: end },
+      end_date: { $gte: start }
+    })
+    if (existingReservation) {
+      return res.status(400).json({ error: `This car is already reserved between ${start} to ${end}` })
+    }
 
     const reserveData = {
       start_date: start,
@@ -42,13 +64,19 @@ export const registerReserve = async (req: IRequestWithUser, res: Response) => {
     const { error } = reserveValidationSchema.validate(reserveDataTest)
     if (error) {
       return res.status(400).json({ error: error.details[0].message })
-    }
+    }    
 
     const newReserve = new Reserve(reserveData)
     const result = await newReserve.save()
     const { _id, __v, ...reserve } = result.toObject()
-    res.status(201).json(reserve)
+    const formattedReserve = {
+      _id: _id,
+      ...reserve
+    }
+    
+    res.status(201).json(formattedReserve)
   } catch (err) {
+    console.error(err)
     return res.status(500).send('Internal server error')
   }
 }
