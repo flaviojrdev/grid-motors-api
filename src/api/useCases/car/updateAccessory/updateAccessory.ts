@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import mongoose from 'mongoose'
-import Car from '@entities/car'
-import { IAccessory } from '@interfaces/accessory'
+import Car from '../../../entities/car'
+import { IAccessory } from '../../../interfaces/accessory'
 
 export const updateAccessoryById = async (req: Request, res: Response) => {
   try {

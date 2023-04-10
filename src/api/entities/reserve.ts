@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { Ireserve } from '@interfaces/reserve'
+import { Ireserve } from '../interfaces/reserve'
 
 const reserveSchema = new mongoose.Schema<Ireserve>({
   start_date: {

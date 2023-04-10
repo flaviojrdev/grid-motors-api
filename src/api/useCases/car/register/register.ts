@@ -1,6 +1,6 @@
-import Car from '@entities/car'
+import Car from '../../../entities/car'
 import { Request, Response } from 'express'
-import carValidationSchema from '@utils/validateCar'
+import carValidationSchema from '../../../utils/validateCar'
 
 export const registerCar = async (req: Request, res: Response) => {
   try {

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import mongoose from 'mongoose'
-import User from '@entities/user'
+import User from '../../../entities/user'
 
 export const listUserById = async (req: Request, res: Response) => {
   try {

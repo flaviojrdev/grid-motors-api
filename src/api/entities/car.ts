@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
-import { IAccessory } from '@interfaces/accessory'
-import { ICar } from '@interfaces/car'
+import { IAccessory } from '../interfaces/accessory'
+import { ICar } from '../interfaces/car'
 
 const accessorySchema = new mongoose.Schema(
   {

@@ -1,8 +1,8 @@
 import { Response, NextFunction } from 'express'
 import jwt, { Secret, JwtPayload } from 'jsonwebtoken'
-import User from '@entities/user'
-import { IUser } from '@interfaces/user'
-import { IRequestWithUser } from '@interfaces/requestWithUser'
+import User from '../entities/user'
+import { IUser } from '../interfaces/user'
+import { IRequestWithUser } from '../interfaces/requestWithUser'
 
 export const authMiddleware = async (req: IRequestWithUser, res: Response, next: NextFunction) => {
   if (process.env.NODE_ENV === 'test' && process.env.SKIP_AUTH === 'true') {

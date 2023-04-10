@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import Reserve from '@entities/reserve'
+import Reserve from '../../../entities/reserve'
 
 export const listAllReserves = async (req: Request, res: Response) => {
   const page = parseInt(req.query.page as string) || 1

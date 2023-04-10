@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import Database from '@data/Database'
+import Database from '../data/Database'
 
 describe('Database', () => {
   const db = new Database()

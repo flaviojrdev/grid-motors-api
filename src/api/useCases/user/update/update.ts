@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import mongoose from 'mongoose'
-import User from '@entities/user'
-import userValidationSchema from '@utils/validateUser'
+import User from '../../../entities/user'
+import userValidationSchema from '../../../utils/validateUser'
 import bcrypt from 'bcrypt'
 
 export const updateUserById = async (req: Request, res: Response) => {

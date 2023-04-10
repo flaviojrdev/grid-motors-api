@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import mongoose from 'mongoose'
-import Car from '@entities/car'
+import Car from '../../../entities/car'
 
 export const listCarById = async (req: Request, res: Response) => {
   try {
