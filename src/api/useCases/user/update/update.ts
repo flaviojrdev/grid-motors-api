@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import mongoose from 'mongoose'
 import User from '@entities/user'
 import userValidationSchema from '@utils/validateUser'
+import bcrypt from 'bcrypt'
 
 export const updateUserById = async (req: Request, res: Response) => {
   try {
@@ -16,6 +17,12 @@ export const updateUserById = async (req: Request, res: Response) => {
     }
 
     const updates = req.body
+    if (updates.password) {
+      const saltRounds = 10
+      const hashedPassword = await bcrypt.hash(updates.password, saltRounds)
+      updates.password = hashedPassword
+    }
+
     const user = await User.findByIdAndUpdate(id, updates, { new: true })
     if (!user) {
       return res.status(404).json({ message: 'User not found' })
