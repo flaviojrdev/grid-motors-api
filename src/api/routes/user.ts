@@ -6,6 +6,7 @@ const userRouter = Router()
 
 userRouter
   .get('/', authMiddleware, userUseCases.listAllUsers)
+  .get('/:id', authMiddleware, userUseCases.listUserById)
   .post('/', userUseCases.registerUser)
   .delete('/:id', authMiddleware, userUseCases.removeUserById)
   .put('/:id', authMiddleware, userUseCases.updateUserById)
