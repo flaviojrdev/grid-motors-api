@@ -97,6 +97,22 @@ $ npm run dev
 ```
 6. The server will be running at `localhost:port`.
 
+### How to run with Docker
+
+1. Make sure you have Docker and Docker Compose installed on your machine.
+2. Clone the repository to your local machine with the command:
+```bash
+$ git clone https://github.com/flaviojrdev/grid-motors-api.git
+```
+3. Navigate to the project root directory.
+4. Create a .env file at the project root (use the .env.example file as a template).
+5. Start the application using Docker Compose with the command:
+```bash
+docker-compose up -d
+```
+6. Docker Compose will download the necessary images and start the services defined in the docker-compose.yml file.
+The API will be accessible at http://localhost:<PORT>, where <PORT> is the port defined in the .env file.
+
 ![divBar](https://user-images.githubusercontent.com/117425361/220209151-a5c53a41-c9b0-4fa7-a358-f430571ed026.png)
 
 ## 🧰 Technologies
