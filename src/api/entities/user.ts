@@ -39,6 +39,7 @@ const userSchema = new mongoose.Schema({
   },
   complement: {
     type: String,
+    default: 'not provided',
     required: true,
   },
   neighborhood: {
