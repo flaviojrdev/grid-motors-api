@@ -1,4 +1,4 @@
-import Reserve from '@entities/reserve'
+import Reserve from '../../../entities/reserve'
 import Car from '../../../entities/car'
 import { Response } from 'express'
 import { IRequestWithUser } from '../../../interfaces/requestWithUser'
