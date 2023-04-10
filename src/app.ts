@@ -4,10 +4,9 @@ import Database from './data/Database'
 import morgan from 'morgan'
 import cors from 'cors'
 import helmet from 'helmet'
-import YAML from 'yamljs'
 import swaggerUi from 'swagger-ui-express'
 
-const swaggerDocs = YAML.load('./swagger.yaml');
+const swaggerDocs = require('../swagger.json')
 
 const app: Application = express()
 const db: Database = new Database()

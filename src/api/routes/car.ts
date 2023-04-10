@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { authMiddleware } from '@middlewares/auth'
+import { authMiddleware } from '../middlewares/auth'
 import carUseCases from '../useCases/car/index'
 
 const carRouter = Router()
