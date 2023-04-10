@@ -1,0 +1,519 @@
+{
+	"info": {
+		"_postman_id": "b2ab10a8-1fe7-40c1-854c-c13938599a89",
+		"name": "Grid Motors",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25707746"
+	},
+	"item": [
+		{
+			"name": "Car",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"model\": \"Batmobile\",\r\n    \"color\": \"Black\",\r\n    \"year\": 1966,\r\n    \"values_per_day\": 200,\r\n    \"accessories\": [\r\n        {\r\n            \"description\": \"rocket engine\"\r\n        }\r\n    ],\r\n    \"number_of_passengers\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/car",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"car"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listAll",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/car",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"car"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listByQueryParam",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/car?model=GM%20S10%202.8",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"car"
+							],
+							"query": [
+								{
+									"key": "model",
+									"value": "GM%20S10%202.8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listById",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/car/6432272367aaf3d244c4a05e",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"car",
+								"6432272367aaf3d244c4a05e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateAccessory",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"back camera\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/car/64331385039d960856d1d6df/accessories/6433a173a6b14b627621ffae",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"car",
+								"64331385039d960856d1d6df",
+								"accessories",
+								"6433a173a6b14b627621ffae"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/car/6432262367aaf3d244c4a048",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"car",
+								"6432262367aaf3d244c4a048"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"model\": \"Ferrari\",\r\n    \"color\": \"Red\",\r\n    \"year\": 2017,\r\n    \"values_per_day\": 2000,\r\n    \"accessories\": [\r\n        {\r\n            \"description\": \"leather seats\"\r\n        }\r\n    ],\r\n    \"number_of_passengers\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/car/643324406d85f20f99bbac23",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"car",
+								"643324406d85f20f99bbac23"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Bruce Wayne\",\r\n    \"cpf\": \"234.980.290-61\",\r\n    \"birth\": \"03/03/2000\",\r\n    \"email\": \"batman@email.com\",\r\n    \"password\": \"123456\",\r\n    \"cep\": \"58058260\",\r\n    \"qualified\": \"yes\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listByQueryParam",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user?name=bruce%20wayne",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "bruce%20wayne"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user/643323e36d85f20f99bbac18",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"643323e36d85f20f99bbac18"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user/64331296039d960856d1d6da",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"64331296039d960856d1d6da"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Joãozinho Ciclano\",\r\n    \"cpf\": \"131.147.860-49\",\r\n    \"birth\": \"03/03/2000\",\r\n    \"email\": \"joazinho@email.com\",\r\n    \"password\": \"1234567\",\r\n    \"cep\": \"01001000\",\r\n    \"qualified\": \"yes\",\r\n    \"patio\": \"Praça da Sé\",\r\n    \"complement\": \"lado ímpar\",\r\n    \"neighborhood\": \"Sé\",\r\n    \"locality\": \"São Paulo\",\r\n    \"uf\": \"SP\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user/64331296039d960856d1d6da",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"64331296039d960856d1d6da"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"batman@email.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reserve",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"start_date\": \"20/05/2023\",\r\n    \"end_date\": \"30/05/2023\",\r\n    \"id_car\": \"643324406d85f20f99bbac23\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/reserve",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/reserve",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reserve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listByQueryParam",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/reserve?final_value=1000",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reserve"
+							],
+							"query": [
+								{
+									"key": "final_value",
+									"value": "1000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/reserve/643326f16d85f20f99bbac4e",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reserve",
+								"643326f16d85f20f99bbac4e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/reserve/64322a7fca09b361c10d2c38",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reserve",
+								"64322a7fca09b361c10d2c38"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"start_date\": \"21/04/2023\",\r\n    \"end_date\": \"30/04/2023\",\r\n    \"final_value\": 1000,\r\n    \"id_car\": \"64331385039d960856d1d6df\",\r\n    \"id_user\": \"64331296039d960856d1d6da\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/reserve/643326f16d85f20f99bbac4e",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reserve",
+								"643326f16d85f20f99bbac4e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzMyM2UzNmQ4NWYyMGY5OWJiYWMxOCIsImlhdCI6MTY4MTE0MTIwNSwiZXhwIjoxNjgxMTg0NDA1fQ.T4bXLV9w3r5fFT_vrnC4mCbXiVswnZ6gYkrJ7HXi9cs",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "localhost:3000/api/v1",
+			"type": "string"
+		}
+	]
+}
