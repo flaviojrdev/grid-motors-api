@@ -46,6 +46,29 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/User'
+  /user/{userId}:
+    get:
+      summary: Search user by ID
+      tags:
+        - User
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user to search
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
     put:
       summary: Update a user
       tags:
@@ -124,6 +147,27 @@ paths:
       summary: List all cars
       tags:
         - Car
+      responses:
+        '200':
+          description: List of cars
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Car'
+  /car/{carId}:
+    get:
+      summary: List car by ID
+      tags:
+        - Car
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the car to search
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: List of cars
@@ -226,6 +270,31 @@ paths:
                   $ref: '#/components/schemas/Reserve'
         '401':
           description: Unauthorized
+  /reserve/{reserveId}:
+    get:
+      summary: Search a reserve by ID
+      tags:
+        - Reserve
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the reservation to search
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of reservations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Reserve'
+        '401':
+          description: Unauthorized
     put:
       summary: Update a car reservation
       tags:
@@ -238,7 +307,7 @@ paths:
           required: true
           description: ID of the reservation to update
           schema:
-            type: integer
+            type: string
       requestBody:
         content:
           application/json:
@@ -270,7 +339,7 @@ paths:
           required: true
           description: ID of the reservation to delete
           schema:
-            type: integer
+            type: string
       responses:
         '204':
           description: Reservation deleted
