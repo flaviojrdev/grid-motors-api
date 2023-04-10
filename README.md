@@ -31,13 +31,13 @@ Thank you for taking the time to check out my project!
 - [X] Readability
 - [X] Small commits
 - [X] README documentation
-- [X] Swagger documentation -> [link]()
+- [X] Swagger documentation (Conflicts with deploy, so it need to be open locally)
 - [X] ESLint
 - [X] API deploy
 - [X] JWT
 - [X] Authentication route
 - [X] Protected routes (token bearer with 12h deadline)
-- [ ] Unit tests (70% test coverage)
+- [ ] Unit tests (70% test coverage) - Achieved 60%
 
 ![divBar](https://user-images.githubusercontent.com/117425361/220209151-a5c53a41-c9b0-4fa7-a358-f430571ed026.png)
 
@@ -68,7 +68,7 @@ Thank you for taking the time to check out my project!
 
 ### Test it right away
 
-You can test the API without running locally, using the [application deployment]() using [Postman](https://www.postman.com/) or [Insomnia](https://insomnia.rest/download). Also you can check the [swagger documentation]().
+You can test the API without running locally, using the [application deployment](https://grid-motors-api.vercel.app/) using [Postman](https://www.postman.com/) or [Insomnia](https://insomnia.rest/download)..
 
 ### Local hosting
 
