@@ -27,17 +27,20 @@ export const updateAccessoryById = async (req: Request, res: Response) => {
     }
 
     const { description } = updates
+
     if (description && description === car.accessories[accessoryIndex].description) {
       if (car.accessories.length <= 1) {
         return res.status(400).json({ message: 'The car cannot have less than one accessory' })
       }
       car.accessories.splice(accessoryIndex, 1)
       const updatedCar = await car.save()
-      return res.status(200).json({ message: 'Accessory deleted', car: updatedCar })
+      const { __v, ...carWithoutV } = updatedCar.toObject()
+      return res.status(200).json({ message: 'Accessory deleted', car: carWithoutV })
     } else {
       car.accessories[accessoryIndex] = { ...car.accessories[accessoryIndex], ...updates }
       const updatedCar = await car.save()
-      return res.status(200).json(updatedCar)
+      const { __v, ...carWithoutV } = updatedCar.toObject()
+      return res.status(200).json({ message: 'Accessory updated', car: carWithoutV })
     }
   } catch (error) {
     res.status(500).json({ message: 'Internal server error' })

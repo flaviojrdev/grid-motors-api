@@ -55,7 +55,7 @@ const userValidationSchema = Joi.object({
     'string.empty': 'Patio cannot be empty',
     'any.required': 'Patio is required',
   }),
-  complement: Joi.string().required().messages({
+  complement: Joi.string().default('not provided').required().messages({
     'string.base': 'Complement should be a string',
     'string.empty': 'Complement cannot be empty',
     'any.required': 'Complement is required',

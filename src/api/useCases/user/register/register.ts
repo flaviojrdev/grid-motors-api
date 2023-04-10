@@ -26,6 +26,12 @@ export const registerUser = async (req: Request, res: Response) => {
       uf: data.uf,
     })
 
+    if (newUser.complement === '') {
+      newUser.complement = 'not provided'
+    }
+
+    console.log(newUser.complement)
+
     const testUser = newUser.toObject({ versionKey: false })
     delete testUser._id
     const { error } = userValidationSchema.validate(testUser)

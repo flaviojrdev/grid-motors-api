@@ -31,11 +31,12 @@ const carValidationSchema = Joi.object({
     'number.empty': 'Values per day cannot be empty',
     'any.required': 'Values per day is required',
   }),
-  accessories: Joi.array().items(accessoryValidationSchema).min(1).required().messages({
+  accessories: Joi.array().items(accessoryValidationSchema).min(1).required().unique('description').messages({
     'array.base': 'Accessories must be an array',
     'array.empty': 'Accessories cannot be empty',
     'array.min': 'At least one accessory is required',
     'any.required': 'Accessories is required',
+    'array.unique': 'Cannot have two accessories with the same description',
   }),
   number_of_passengers: Joi.number().required().messages({
     'number.base': 'Number of passengers must be a number',

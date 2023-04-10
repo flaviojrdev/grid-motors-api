@@ -1,4 +1,5 @@
 import Joi from 'joi'
+import moment from 'moment'
 
 const reserveValidationSchema = Joi.object({
   start_date: Joi.string()
@@ -29,6 +30,15 @@ const reserveValidationSchema = Joi.object({
     'any.required': 'User ID is required',
     'string.base': 'User ID must be a string',
   }),
-})
+}).custom((value, helpers) => {
+  const startDate = moment(value.start_date, 'DD/MM/YYYY');
+  const endDate = moment(value.end_date, 'DD/MM/YYYY');
+  if (!startDate.isBefore(endDate)) {
+    return helpers.error('any.invalid');
+  }
+  return value;
+}).messages({
+  'any.invalid': 'Start date must be before end date',
+});
 
 export default reserveValidationSchema
