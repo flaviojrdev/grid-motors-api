@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import User from '@entities/user'
+import User from '../../../entities/user'
 
 export const listAllUsers = async (req: Request, res: Response) => {
   const page = parseInt(req.query.page as string) || 1

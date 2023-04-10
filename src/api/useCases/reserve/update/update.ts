@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import mongoose from 'mongoose'
-import Reserve from '@entities/reserve'
-import reserveValidationSchema from '@utils/validateReserve'
+import Reserve from '../../../entities/reserve'
+import reserveValidationSchema from '../../../utils/validateReserve'
 
 export const updateReserveById = async (req: Request, res: Response) => {
   try {

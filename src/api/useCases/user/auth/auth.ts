@@ -1,4 +1,4 @@
-import User from '@entities/user'
+import User from '../../../entities/user'
 import { Request, Response } from 'express'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'

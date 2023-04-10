@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import Car from '@entities/car'
+import Car from '../../../entities/car'
 
 export const listAllCars = async (req: Request, res: Response) => {
   const page = parseInt(req.query.page as string) || 1

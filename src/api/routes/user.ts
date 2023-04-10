@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { authMiddleware } from '@middlewares/auth'
-import userUseCases from '@useCases/user/index'
+import { authMiddleware } from '../middlewares/auth'
+import userUseCases from '../useCases/user/index'
 
 const userRouter = Router()
 

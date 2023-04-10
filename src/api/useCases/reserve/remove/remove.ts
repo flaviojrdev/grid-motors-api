@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import mongoose from 'mongoose'
-import Reserve from '@entities/reserve'
+import Reserve from '../../../entities/reserve'
 
 export const removeReserveById = async (req: Request, res: Response) => {
   try {

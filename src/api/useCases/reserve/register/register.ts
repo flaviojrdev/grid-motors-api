@@ -1,8 +1,8 @@
 import Reserve from '@entities/reserve'
-import Car from '@entities/car'
+import Car from '../../../entities/car'
 import { Response } from 'express'
-import { IRequestWithUser } from '@interfaces/requestWithUser'
-import reserveValidationSchema from '@utils/validateReserve'
+import { IRequestWithUser } from '../../../interfaces/requestWithUser'
+import reserveValidationSchema from '../../../utils/validateReserve'
 import moment from 'moment'
 
 export const registerReserve = async (req: IRequestWithUser, res: Response) => {

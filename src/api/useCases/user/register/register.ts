@@ -1,6 +1,6 @@
-import User from '@entities/user'
+import User from '../../../entities/user'
 import type { Request, Response } from 'express'
-import userValidationSchema from '@utils/validateUser'
+import userValidationSchema from '../../../utils/validateUser'
 import { MongoServerError } from 'mongodb'
 import axios from 'axios'
 import bcrypt from 'bcrypt'
